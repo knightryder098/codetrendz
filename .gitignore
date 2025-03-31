@@ -43,6 +43,7 @@ yarn-error.log*
 *.swo
 .DS_Store
 Thumbs.db
+.cursor/
 
 # Project specific
 *.log
