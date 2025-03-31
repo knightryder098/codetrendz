@@ -1,0 +1,57 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor AI Development Rules: Full-Stack App Development
+
+## Full-Stack Awareness
+- Be mindful of both frontend and backend implications for any feature or change.
+- If the specific tech stack isn't clear from the context, ask or use a common default (e.g., `React/Node.js`, `Vue/Python/Flask`, etc.) and **state your assumption**.
+
+## Simplicity First
+- Prioritize simple, clear, and maintainable solutions suitable for small-to-medium applications. Avoid overly complex architectural patterns unless specifically requested.
+
+## Test Generation
+- For every significant function, component, or API endpoint generated, **propose or generate corresponding unit or integration tests**.
+- Use standard testing libraries appropriate for the language/framework (e.g., `Jest`/`React Testing Library` for frontend JS/TS, `pytest` for Python, `JUnit` for Java, etc.).
+- Tests should cover primary success paths, common edge cases, and potential failure modes.
+
+## Version Control Integration
+- When generating code for a new feature or significant change, suggest a concise and descriptive Git commit message following **Conventional Commits** format (e.g., `feat: Add user authentication endpoint`, `fix: Correct calculation error in cart total`, `test: Add unit tests for utility functions`).
+- Encourage **atomic commits** – group related changes logically.
+
+## Security Implementation
+- Actively incorporate security best practices:
+    - **Input Validation:** Sanitize and validate all user inputs (frontend and backend).
+    - **Output Encoding:** Prevent `XSS` by properly encoding output displayed in the frontend.
+    - **Parameterized Queries:** Always use parameterized queries or ORMs to prevent `SQL injection`.
+    - **Authentication/Authorization:** Implement checks where necessary. Remind me if sensitive routes lack protection.
+    - **Dependency Security:** Use up-to-date libraries (while respecting project constraints).
+
+## Secret Management
+- **Never hardcode secrets** (API keys, database passwords, tokens) directly into the source code.
+- Always use environment variables (e.g., via `.env` files) or a dedicated configuration management system.
+- Generate or update `.gitignore` to include configuration files containing secrets (e.g., `.env`, `config/secrets.yml`). Remind me if a sensitive file type isn't ignored.
+
+## Test Feedback Loop
+- Structure generated tests to provide clear, actionable feedback upon failure (e.g., showing expected vs. actual results).
+- When asked to debug based on a failing test, explain the likely cause of the failure and how the proposed code change addresses it.
+
+## Environment Separation (Dev/Test/Prod)
+- Structure configuration loading to easily support `development`, `testing`, and `production` environments.
+- Utilize environment variables (e.g., `NODE_ENV`, `FLASK_ENV`) to switch configurations (database connections, API endpoints, logging levels, feature flags).
+- Example: Load `.env.development`, `.env.testing`, or rely on system environment variables for production.
+
+## Code Modularity & Size
+- Generate code in manageable, focused blocks. Aim for functions/methods/components to be concise and files to ideally stay within the **200-400 line range** where practical.
+- Break down larger tasks into smaller, reusable functions or components.
+
+## Contextual Awareness & Reuse
+- **Prioritize using existing code:** Before generating new code, actively scan open files and the project context (`@` files/folders) to reuse existing functions, variables, types, components, and established patterns.
+- If similar functionality exists, suggest refactoring or reusing it instead of duplicating logic.
+- If context seems missing, ask for specific files or clarification.
+
+## Readability & Documentation
+- Include clear function/method definitions/signatures.
+- Add concise comments or docstrings (e.g., JSDoc, Python docstrings) explaining the purpose, parameters (`@param`), return values (`@return`), and any non-obvious logic for key functions.
