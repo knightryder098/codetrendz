@@ -49,4 +49,7 @@ Thumbs.db
 *.log
 .coverage
 htmlcov/
-.pytest_cache/ 
+.pytest_cache/
+
+# Cursor specific
+@cursor-app-secure-rules.mdc 
